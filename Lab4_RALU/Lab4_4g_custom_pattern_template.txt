@@ -1,0 +1,25 @@
+# Lab4 4g Custom Pattern Template (for DAD)
+
+Signal order per sample:
+`MSA1 MSA0 MSB1 MSB0 MSC2 MSC1 MSC0 INPUT3 INPUT2 INPUT1 INPUT0 Cin CLK`
+
+Use a slow clock (0.25 Hz to 1 Hz). Keep `Cin=0` for all lines below.
+Apply each line for one active clock edge.
+
+Step,MSA,MSB,MSC,INPUT,Cin,BitString(12 bits without CLK)
+1,00,10,000,4,0,001000001000
+2,01,00,000,A,0,010000101000
+3,11,10,100,0,0,111010000000
+4,01,00,000,6,0,010000011000
+5,11,10,011,0,0,111100000000
+6,11,10,110,0,0,111100000000
+7,11,10,110,0,0,111100000000
+8,01,00,000,3,0,010000001100
+9,11,10,100,0,0,111010000000
+10,11,10,010,0,0,110100000000
+11,11,10,111,0,0,111110000000
+
+Expected final state:
+- REGA = 2
+- REGB = 3
+- OUTPUT (MSC=111) = 1

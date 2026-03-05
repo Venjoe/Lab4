@@ -40,6 +40,7 @@ Last Updated: 2026-03-04
   - [x] HEX display mapping for REGA/REGB/OUTPUT and `Cout`
   - [x] Added board top file: `Lab4_RALU/Lab4_RALU_DE10_Top.v`
   - [x] Added mapping guide: `Lab4_RALU/LAB4_RALU_DE10_DAD_MAPPING_GUIDE.md`
+  - [x] Added custom pattern template: `Lab4_RALU/Lab4_4g_custom_pattern_template.txt`
   - [ ] Physical wiring + on-board behavioral check with DAD
   - [ ] Save and verify `Lab4_4g.dwf3work`
 - [ ] P7. Final submission package cleanup (English-only, archive-ready).
