@@ -86,3 +86,4 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX2[4]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX2[5]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX2[6]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX2_DP
+
