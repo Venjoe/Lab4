@@ -1,0 +1,21 @@
+# Quartus build artifacts
+**/db/
+**/incremental_db/
+**/output_files/
+**/work/
+**/*.qws
+**/*.rpt
+**/*.smsg
+**/*.jdi
+**/*.sof
+**/*.pof
+**/*.pin
+**/*.summary
+**/*.map.*
+**/*.fit.*
+**/*.sta.*
+**/*.asm.*
+
+# Simulation temp
+**/transcript
+**/vsim.wlf
