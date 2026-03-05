@@ -58,3 +58,8 @@ Last Updated: 2026-03-04
   - Error: `Invalid license environment`
   - Required variable appears unset: `SALT_LICENSE_SERVER`
   - Workaround in place: Icarus Verilog CLI evidence flow is operational.
+
+## Newly Generated Support Docs (2026-03-05)
+- `Lab4_RALU/PRELAB_QUESTIONS_ANSWERS.md`
+- `Lab4_RALU/FINAL_SUBMISSION_CHECKLIST.md`
+- `Lab4_RALU/LAB4_4G_DWF3WORK_IMPORT_GUIDE.md`
