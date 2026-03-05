@@ -9,4 +9,4 @@ Step,MSA,MSB,MSC,Input,Cin,RegA_before,RegB_before,Output_before,RegA_plus,RegB_
 8,01,00,000,3,0,8,6,8,8,3,8,Load constant 3 into REGB and preserve REGA
 9,11,10,100,don't care,0,8,3,B,B,3,B,Compute REGA OR REGB and store to REGA
 10,11,10,010,don't care,0,B,3,4,4,3,4,Complement REGA and store to REGA
-11,11,10,111,don't care,0,4,3,2,2,3,2,Shift REGA right by 1 (divide by 2)
+11,11,10,111,don't care,0,4,3,2,2,3,1,Shift REGA right by 1 (divide by 2)
