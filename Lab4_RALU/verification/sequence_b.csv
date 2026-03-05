@@ -1,0 +1,4 @@
+sequence,step,label,MSA,MSB,MSC,INPUT,Cin,RegA_before,RegB_before,Output_before,Cout_before,RegA_plus,RegB_plus,Output_plus,Cout_plus
+b,1,Load A,00,10,000,A,0,0,0,0,0,A,0,A,0
+b,2,Load B,01,00,000,5,0,A,0,A,0,A,5,A,0
+b,3,B <- A OR B,01,11,100,0,0,A,5,F,0,A,F,F,1
