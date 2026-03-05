@@ -23,7 +23,9 @@ Last Updated: 2026-03-04
 - [x] P2. Expose required outputs: `REGA`, `REGB`, `OUTPUT`, `Cout`.
 - [ ] P3. Simulate each simple Table-3 function and annotate waveforms.
   - [x] Created `Lab4_RALU_tb.v` self-checking testbench for all 8 Table-3 functions.
-  - [ ] Run simulation and save waveform evidence (blocked by Questa license env).
+  - [x] Added `Lab4_RALU_tb_evidence.v` with simple functions + 4g sequence checks.
+  - [x] Ran Icarus simulation and saved evidence in `Lab4_RALU/verification/iverilog/`.
+  - [ ] Optional: rerun same evidence in Questa once license env is fixed.
 - [ ] P4. Build control-word sequences (`MSA1:0, MSB1:0, MSC2:0`) for complex operations a~g.
   - [x] Draft sequence file created: `Lab4_RALU/LAB4_RALU_CONTROL_WORDS_DRAFT.md`
   - [x] Logic-level sequence checker added: `Lab4_RALU/tools/ralu_sequence_checker.py`
@@ -54,3 +56,4 @@ Last Updated: 2026-03-04
 - Questa command-line simulation currently fails due to missing license environment setup:
   - Error: `Invalid license environment`
   - Required variable appears unset: `SALT_LICENSE_SERVER`
+  - Workaround in place: Icarus Verilog CLI evidence flow is operational.

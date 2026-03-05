@@ -1,0 +1,15 @@
+=== Part A: Table-3 simple function checks ===
+After load A=0xA B=0x3 | A=a B=3 OUT=a Cout=0
+=== Part B: Sequence 4g check ===
+g1 load 4->A | A=4 B=3 OUT=4 Cout=0
+g2 load Aconst->B | A=4 B=a OUT=4 Cout=0
+g3 A<-A|B | A=e B=a OUT=e Cout=1
+g4 load 6->B | A=e B=6 OUT=e Cout=1
+g5 A<-A&B | A=6 B=6 OUT=6 Cout=0
+g6 A<-A<<1 | A=c B=6 OUT=8 Cout=1
+g7 A<-A<<1 | A=8 B=6 OUT=0 Cout=0
+g8 load 3->B | A=8 B=3 OUT=8 Cout=0
+g9 A<-A|B | A=b B=3 OUT=b Cout=0
+g10 A<-~A | A=4 B=3 OUT=b Cout=0
+g11 A<-A>>1 | A=2 B=3 OUT=1 Cout=0
+PASS: Lab4_RALU_tb_evidence completed with 0 errors.
