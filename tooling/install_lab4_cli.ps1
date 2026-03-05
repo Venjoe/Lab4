@@ -6,8 +6,8 @@ $ErrorActionPreference = "Stop"
 
 function Test-CommandExists {
   param([string]$Name)
-  & where.exe $Name 1>$null 2>$null
-  return ($LASTEXITCODE -eq 0)
+  $cmd = Get-Command $Name -ErrorAction SilentlyContinue
+  return ($null -ne $cmd)
 }
 
 function Install-WingetPackage {
@@ -17,6 +17,26 @@ function Install-WingetPackage {
   )
   Write-Host "[install] $DisplayName ($PackageId)"
   winget install --id $PackageId --exact --source winget --accept-package-agreements --accept-source-agreements
+}
+
+function Add-UserPathEntry {
+  param([string]$Entry)
+  if (-not (Test-Path -LiteralPath $Entry)) { return $false }
+  $userPath = [Environment]::GetEnvironmentVariable("Path", "User")
+  $parts = @()
+  if ($userPath) { $parts = $userPath -split ";" }
+  $exists = ($parts | Where-Object { $_.TrimEnd("\") -ieq $Entry.TrimEnd("\") }).Count -gt 0
+  if (-not $exists) {
+    $newPath = if ($userPath) { "$userPath;$Entry" } else { $Entry }
+    [Environment]::SetEnvironmentVariable("Path", $newPath, "User")
+    if (($env:Path -split ";") -notcontains $Entry) {
+      $env:Path = "$env:Path;$Entry"
+    }
+    Write-Host "[path] added to user PATH: $Entry"
+  } else {
+    Write-Host "[path] already in user PATH: $Entry"
+  }
+  return $true
 }
 
 if (-not (Test-CommandExists "winget")) {
@@ -45,17 +65,13 @@ if (-not (Test-Path -LiteralPath $QuartusBin64)) {
   Write-Host "[quartus] Quartus bin64 path not found: $QuartusBin64"
   Write-Host "[quartus] Install Intel Quartus Prime Lite 25.1 manually, then set PATH."
 } else {
-  $userPath = [Environment]::GetEnvironmentVariable("Path", "User")
-  $parts = @()
-  if ($userPath) { $parts = $userPath -split ";" }
-  $exists = ($parts | Where-Object { $_.TrimEnd("\") -ieq $QuartusBin64.TrimEnd("\") }).Count -gt 0
-  if (-not $exists) {
-    $newPath = if ($userPath) { "$userPath;$QuartusBin64" } else { $QuartusBin64 }
-    [Environment]::SetEnvironmentVariable("Path", $newPath, "User")
-    Write-Host "[quartus] added to user PATH: $QuartusBin64"
-  } else {
-    Write-Host "[quartus] already in user PATH"
-  }
+  Add-UserPathEntry -Entry $QuartusBin64 | Out-Null
+}
+
+# Ensure Icarus path when installed by winget
+$icarusBin = "C:\iverilog\bin"
+if (Test-Path -LiteralPath $icarusBin) {
+  Add-UserPathEntry -Entry $icarusBin | Out-Null
 }
 
 Write-Host ""

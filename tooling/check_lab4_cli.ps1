@@ -4,6 +4,14 @@ param(
 
 $ErrorActionPreference = "Stop"
 
+# Refresh PATH from registry to avoid stale parent-process environment.
+$userPath = [Environment]::GetEnvironmentVariable("Path", "User")
+$machinePath = [Environment]::GetEnvironmentVariable("Path", "Machine")
+$merged = @()
+if ($machinePath) { $merged += $machinePath }
+if ($userPath) { $merged += $userPath }
+$env:Path = ($merged -join ";")
+
 $tools = @(
   @{ Name = "Quartus Shell"; Commands = @("quartus_sh"); Required = $true; Note = "Intel Quartus Prime Lite 25.1" },
   @{ Name = "Quartus Map"; Commands = @("quartus_map"); Required = $true; Note = "Intel Quartus Prime Lite 25.1" },
